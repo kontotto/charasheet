@@ -1,10 +1,100 @@
 [
   {
-    "name": "行動技能",
+    "name": "戦闘技能",
+    "pnl_color": "panel-primary",
+    "btn_color": "btn-primary",
     "list": [
       {
-      "name": "aiueo",
-      "ini": 25
+        "name": "回避",
+        "ini": 0
+      },
+      {
+        "name": "キック",
+        "ini": 25
+      },
+      {
+        "name": "組み付き",
+        "ini": 25
+      },
+      {
+        "name": "こぶし（パンチ）",
+        "ini": 50
+      },
+      {
+        "name": "頭突き",
+        "ini": 10
+      },
+      {
+        "name": "投擲",
+        "ini": 25
+      },
+      {
+        "name": "マーシャルアーツ",
+        "ini": 1
+      },
+      {
+        "name": "拳銃",
+        "ini": 20
+      },
+      {
+        "name": "サブマシンガン",
+        "ini": 15
+      },
+      {
+        "name": "ショットガン",
+        "ini": 30
+      },
+      {
+        "name": "マシンガン",
+        "ini": 15
+      },
+      {
+        "name": "ライフル",
+        "ini": 25
+      }
+    ]
+  },
+  {
+    "name": "戦闘技能",
+    "pnl_color": "panel-success",
+    "btn_color": "btn-success",
+    "list": [
+      {
+        "name": "aiueo",
+        "ini": 15
+      }
+    ]
+  },
+  {
+    "name": "戦闘技能",
+    "pnl_color": "panel-info",
+    "btn_color": "btn-info",
+    "list": [
+      {
+        "name": "aiueo",
+        "ini": 15
+      }
+    ]
+  },
+  {
+    "name": "戦闘技能",
+    "pnl_color": "panel-warning",
+    "btn_color": "btn-warning",
+    "list": [
+      {
+        "name": "aiueo",
+        "ini": 15
+      }
+    ]
+  },
+  {
+    "name": "戦闘技能",
+    "pnl_color": "panel-danger",
+    "btn_color": "btn-danger",
+    "list": [
+      {
+        "name": "aiueo",
+        "ini": 15
       }
     ]
   }

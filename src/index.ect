@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
 
   <title>CharaSheet</title>
+  <link rel="stylesheet" href="/css/test.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -18,21 +19,25 @@
 </head>
 <body>
   <div class="container">
-    <div class="panel panel-primary">
-      <div class="panel-heading">パネルヘッダー</div>
-      <div class="panel-body">
-        <div class="row">
-        <% for i in @data : %>
-            <div class="col-lg-2">
-              <button type="button" class="btn btn-primary center-block"><%= i.name %></button>
+    <% for panel in @data : %>
+      <div class="panel <%= panel.pnl_color %>">
+        <div class="panel-heading"><%= panel.name %></div>
+        <div class="panel-body">
+          <div class="row">
+            <% for i in panel.list : %>
+              <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn <%= panel.btn_color %> center-block btn-block"><%= i.name %></button>
+              </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <div id="slider" style="margin:20px">
+              <div id="custom-handle" class="ui-slider-handle"></div>
             </div>
-        <% end %>
+          </div> 
         </div>
-        <div class="row">
-          <div id="slider" style="margin:20px">
-        </div> 
       </div>
-    </div>
+    <% end %>
   </div>
 </body>
 </html>

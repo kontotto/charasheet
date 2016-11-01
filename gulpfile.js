@@ -21,11 +21,15 @@ gulp.task('js', function(){
       .pipe(gulp.dest('./public/js'));
 });
 
+gulp.task('css', function(){
+  gulp.src('./src/css/*.css')
+      .pipe(gulp.dest('./public/css'));
+});
+
 gulp.task('watch', function(){
   gulp.watch('./src/js/*.js', ['js']);
+  gulp.watch('./src/css/*.css', ['css']);
   gulp.watch('./src/*.ect', ['html']);
 });
 
-
-
-gulp.task('default', ['test', 'html', 'js']);
+gulp.task('default', ['test', 'html', 'js', 'css', 'watch']);

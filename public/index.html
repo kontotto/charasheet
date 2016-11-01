@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
 
   <title>CharaSheet</title>
+  <link rel="stylesheet" href="/css/test.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -18,19 +19,114 @@
 </head>
 <body>
   <div class="container">
-    <div class="panel panel-primary">
-      <div class="panel-heading">パネルヘッダー</div>
-      <div class="panel-body">
-        <div class="row">
-                    <div class="col-lg-2">
-              <button type="button" class="btn btn-primary center-block">行動技能</button>
+          <div class="panel panel-primary">
+        <div class="panel-heading">戦闘技能</div>
+        <div class="panel-body">
+          <div class="row">
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">回避</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">キック</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">組み付き</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">こぶし（パンチ）</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">頭突き</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">投擲</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">マーシャルアーツ</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">拳銃</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">サブマシンガン</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">ショットガン</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">マシンガン</button>
+              </div>
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-primary center-block btn-block">ライフル</button>
+              </div>
+                      </div>
+          <div class="row">
+            <div id="slider" style="margin:20px">
+              <div id="custom-handle" class="ui-slider-handle"></div>
             </div>
-                </div>
-        <div class="row">
-          <div id="slider" style="margin:20px">
-        </div> 
+          </div> 
+        </div>
       </div>
-    </div>
-  </div>
+          <div class="panel panel-success">
+        <div class="panel-heading">戦闘技能</div>
+        <div class="panel-body">
+          <div class="row">
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-success center-block btn-block">aiueo</button>
+              </div>
+                      </div>
+          <div class="row">
+            <div id="slider" style="margin:20px">
+              <div id="custom-handle" class="ui-slider-handle"></div>
+            </div>
+          </div> 
+        </div>
+      </div>
+          <div class="panel panel-info">
+        <div class="panel-heading">戦闘技能</div>
+        <div class="panel-body">
+          <div class="row">
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-info center-block btn-block">aiueo</button>
+              </div>
+                      </div>
+          <div class="row">
+            <div id="slider" style="margin:20px">
+              <div id="custom-handle" class="ui-slider-handle"></div>
+            </div>
+          </div> 
+        </div>
+      </div>
+          <div class="panel panel-warning">
+        <div class="panel-heading">戦闘技能</div>
+        <div class="panel-body">
+          <div class="row">
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-warning center-block btn-block">aiueo</button>
+              </div>
+                      </div>
+          <div class="row">
+            <div id="slider" style="margin:20px">
+              <div id="custom-handle" class="ui-slider-handle"></div>
+            </div>
+          </div> 
+        </div>
+      </div>
+          <div class="panel panel-danger">
+        <div class="panel-heading">戦闘技能</div>
+        <div class="panel-body">
+          <div class="row">
+                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
+                <button type="button" class="btn btn-danger center-block btn-block">aiueo</button>
+              </div>
+                      </div>
+          <div class="row">
+            <div id="slider" style="margin:20px">
+              <div id="custom-handle" class="ui-slider-handle"></div>
+            </div>
+          </div> 
+        </div>
+      </div>
+      </div>
 </body>
 </html>

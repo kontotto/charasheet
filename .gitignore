@@ -1,2 +1,5 @@
 # モジュール一覧
 node_modules
+
+# ログ
+*.log
