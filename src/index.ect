@@ -22,10 +22,12 @@
       <div class="panel-heading">パネルヘッダー</div>
       <div class="panel-body">
         <div class="row">
-                    <div class="col-lg-2">
-              <button type="button" class="btn btn-primary center-block">行動技能</button>
+        <% for i in @data : %>
+            <div class="col-lg-2">
+              <button type="button" class="btn btn-primary center-block"><%= i.name %></button>
             </div>
-                </div>
+        <% end %>
+        </div>
         <div class="row">
           <div id="slider" style="margin:20px">
         </div> 
