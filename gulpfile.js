@@ -46,9 +46,10 @@ gulp.task('watch', function(){
   gulp.watch('./src/js/*.js', ['js']);
   gulp.watch('./src/css/*.css', ['css']);
   gulp.watch('./src/*.ect', ['html']);
+  gulp.watch('./assets/*', ['assets']);
 });
 
 gulp.task('start', ['webserver']);
-gulp.task('dev', ['html', 'js', 'css', 'assets', 'watch', 'webserver']);
 gulp.task('build', ['html', 'js', 'css', 'assets']);
+gulp.task('dev', ['build', 'watch', 'start']);
 gulp.task('default', ['test', 'html', 'js', 'css', 'watch']);

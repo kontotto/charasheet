@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test",
-    "build": "gulp build",
-    "dev": "gulp dev",
-    "start": "gulp start",
-    "gulp": "gulp"
+    "test"  : "gulp test",
+    "build" : "gulp build",
+    "dev"   : "gulp dev",
+    "start" : "gulp start",
+    "gulp"  : "gulp"
   },
   "repository": {
     "type": "git",

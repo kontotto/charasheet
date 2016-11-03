@@ -1,3 +1,26 @@
+// 暫定的
+#battle_slider .ui-slider-range { background: #729fcf; }
+#battle_slider .ui-slider-handle { border-color: #729fcf; }
+#action_slider .ui-slider-range { background: #729fcf; }
+#action_slider .ui-slider-handle { border-color: #729fcf; }
+#explorer_slider .ui-slider-range { background: #729fcf; }
+#explorer_slider .ui-slider-handle { border-color: #729fcf; }
+#connection_slider .ui-slider-range { background: #729fcf; }
+#connection_slider .ui-slider-handle { border-color: #729fcf; }
+#wisdom_slider .ui-slider-range { background: #729fcf; }
+#wisdom_slider .ui-slider-handle { border-color: #729fcf; }
+
+/* 全体方向のmargin */
+.block-ma-sm {
+    margin: 15px;
+}
+.block-ma-md {
+    margin: 30px;
+}
+.block-ma-lg {
+    margin: 60px;
+}
+
 /* 上方向のmargin */
 .block-mt-sm {
     margin-top: 15px;
@@ -9,13 +32,35 @@
     margin-top: 60px;
 }
  
- /* 下方向のmargin */
- .block-mb-sm {
-     margin-bottom: 15px;
- }
- .block-mb-md {
-     margin-bottom: 30px;
- }
- .block-mb-lg {
-     margin-bottom: 60px;
- }
+/* 下方向のmargin */
+.block-mb-sm {
+    margin-bottom: 15px;
+}
+.block-mb-md {
+    margin-bottom: 30px;
+}
+.block-mb-lg {
+    margin-bottom: 60px;
+}
+
+/* 右方向のmargin */
+.block-mr-sm {
+    margin-right: 15px;
+}
+.block-mr-md {
+    margin-right: 30px;
+}
+.block-mr-lg {
+    margin-right: 60px;
+}
+
+/* 左方向のmargin */
+.block-ml-sm {
+    margin-left: 15px;
+}
+.block-ml-md {
+    margin-left: 30px;
+}
+.block-ml-lg {
+    margin-left: 60px;
+}
