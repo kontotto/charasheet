@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const ect = require('gulp-ect');
+const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const webserver = require('gulp-webserver');
 
@@ -25,7 +26,10 @@ gulp.task('js', function(){
 });
 
 gulp.task('css', function(){
-  gulp.src('./src/css/*.css')
+  gulp.src('./src/css/*.scss')
+      .pipe(sass({
+        includePaths: ["node_modules/bootstrap-sass/assets/stylesheets"]
+      }).on('error', sass.logError))
       .pipe(gulp.dest('./public/css'));
 });
 
@@ -44,7 +48,7 @@ gulp.task('webserver', function(){
 
 gulp.task('watch', function(){
   gulp.watch('./src/js/*.js', ['js']);
-  gulp.watch('./src/css/*.css', ['css']);
+  gulp.watch('./src/css/*.scss', ['css']);
   gulp.watch('./src/*.ect', ['html']);
   gulp.watch('./assets/*', ['assets']);
 });
