@@ -1,0 +1,67 @@
+[
+{
+  "name": "STR",
+    "id": "str",
+    "readonly": false
+},
+{
+  "name": "CON",
+  "id": "con",
+  "readonly": false
+},
+{
+  "name": "POW",
+  "id": "pow",
+  "readonly": false
+},
+{
+  "name": "APP",
+  "id": "app",
+  "readonly": false
+},
+{
+  "name": "SIZ",
+  "id": "siz",
+  "readonly": false
+},
+{
+  "name": "INT",
+  "id": "int",
+  "readonly": false
+},
+{
+  "name": "EDU",
+  "id": "edu",
+  "readonly": false
+},
+{
+  "name": "HP",
+  "id": "hp",
+  "readonly": true
+},
+{
+  "name": "MP",
+  "id": "mp",
+  "readonly": true
+},
+{
+  "name": "SAN",
+  "id": "san",
+  "readonly": true
+},
+{
+  "name": "アイデア",
+  "id": "idea",
+  "readonly": true
+},
+{
+  "name": "幸運",
+  "id": "lucky",
+  "readonly": true
+},
+{
+  "name": "知識",
+  "id": "wisdom",
+  "readonly": true
+}
+]

@@ -1,7 +1,20 @@
 @import 'bootstrap';
 
-.skill{
-  @include button-variant(#cece19, #000000, #2dbe27);
+
+input:read-only{
+  background-color: #cccccc;
+}
+
+table th.title{
+  width: 5em;
+}
+
+td, th{
+  vertical-align: middle !important;
+}
+
+td{
+  padding: 0 !important;
 }
 
 // 暫定的

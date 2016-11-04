@@ -13,180 +13,263 @@
 </head>
 <body>
   <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="row">
           <div class="panel panel-primary">
-        <div class="panel-heading">戦闘技能</div>
-        <div class="panel-body">
-          <div class="row">
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle0" value="回避" data-ini="0" data-parent="battle">
-                  回避 0                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle1" value="キック" data-ini="25" data-parent="battle">
-                  キック 25                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle2" value="組み付き" data-ini="25" data-parent="battle">
-                  組み付き 25                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle3" value="こぶし（パンチ）" data-ini="50" data-parent="battle">
-                  こぶし（パンチ） 50                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle4" value="頭突き" data-ini="10" data-parent="battle">
-                  頭突き 10                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle5" value="投擲" data-ini="25" data-parent="battle">
-                  投擲 25                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle6" value="マーシャルアーツ" data-ini="1" data-parent="battle">
-                  マーシャルアーツ 1                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle7" value="拳銃" data-ini="20" data-parent="battle">
-                  拳銃 20                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle8" value="サブマシンガン" data-ini="15" data-parent="battle">
-                  サブマシンガン 15                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle9" value="ショットガン" data-ini="30" data-parent="battle">
-                  ショットガン 30                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle10" value="マシンガン" data-ini="15" data-parent="battle">
-                  マシンガン 15                </button>
-              </div>
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-primary center-block btn-block skill" id="battle11" value="ライフル" data-ini="25" data-parent="battle">
-                  ライフル 25                </button>
-              </div>
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-              <button type="button" class="btn btn-primary center-block btn-block">追加</button>
+            <div class="panel-heading">技能</div>
+            <div class="panel-body">
+              <label for="usr-name">Name:</label>
+              <input type="text" class="form-control" id="usr-name">
+              <input type="text" class="form-control">
             </div>
           </div>
-          <div class="row">
-            <div id="battle_slider" class="col-xs-4 col-xs-offset-1">
-            </div>
-            <div class="col-xs-2 col-xs-offset-1" id="battle">
-              hello!!
-            </div>
-            <div class="col-xs-1">
-              <button class="btn btn-primary center-block btn-block" id="battle_button" data-parent="battle" disabled>
-                確定
-              </button>
-            </div>
-          </div> 
         </div>
       </div>
-          <div class="panel panel-success">
-        <div class="panel-heading">探索技能</div>
-        <div class="panel-body">
-          <div class="row">
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-success center-block btn-block skill" id="explorer0" value="aiueo" data-ini="15" data-parent="explorer">
-                  aiueo 15                </button>
+      <div class="col-xs-9">
+        <table class="table table-bordered">
+          <caption>ステータス</caption>
+          <tr>
+            <th class="title"></th>
+                          <th>STR</th>
+                          <th>CON</th>
+                          <th>POW</th>
+                          <th>APP</th>
+                          <th>SIZ</th>
+                          <th>INT</th>
+                          <th>EDU</th>
+                          <th>HP</th>
+                          <th>MP</th>
+                          <th>SAN</th>
+                          <th>アイデア</th>
+                          <th>幸運</th>
+                          <th>知識</th>
+                      </tr>
+          <tr>
+            <th>能力値</th>
+                                          <td><input id="str_origin" type="number" style="height:100%; width:100%;" data-parent="str"></td>
+                                                        <td><input id="con_origin" type="number" style="height:100%; width:100%;" data-parent="con"></td>
+                                                        <td><input id="pow_origin" type="number" style="height:100%; width:100%;" data-parent="pow"></td>
+                                                        <td><input id="app_origin" type="number" style="height:100%; width:100%;" data-parent="app"></td>
+                                                        <td><input id="siz_origin" type="number" style="height:100%; width:100%;" data-parent="siz"></td>
+                                                        <td><input id="int_origin" type="number" style="height:100%; width:100%;" data-parent="int"></td>
+                                                        <td><input id="edu_origin" type="number" style="height:100%; width:100%;" data-parent="edu"></td>
+                                                        <td><input id="hp_origin" type="number" style="height:100%; width:100%;" data-parent="hp" readonly="readonly"></td>
+                                                        <td><input id="mp_origin" type="number" style="height:100%; width:100%;" data-parent="mp" readonly="readonly"></td>
+                                                        <td><input id="san_origin" type="number" style="height:100%; width:100%;" data-parent="san" readonly="readonly"></td>
+                                                        <td><input id="idea_origin" type="number" style="height:100%; width:100%;" data-parent="idea" readonly="readonly"></td>
+                                                        <td><input id="lucky_origin" type="number" style="height:100%; width:100%;" data-parent="lucky" readonly="readonly"></td>
+                                                        <td><input id="wisdom_origin" type="number" style="height:100%; width:100%;" data-parent="wisdom" readonly="readonly"></td>
+                                    </tr>
+          <tr>
+            <th>増減値</th>
+                          <td><input id="str_vary" type="number" style="height:100%; width:100%;" data-parent="str"></td>
+                          <td><input id="con_vary" type="number" style="height:100%; width:100%;" data-parent="con"></td>
+                          <td><input id="pow_vary" type="number" style="height:100%; width:100%;" data-parent="pow"></td>
+                          <td><input id="app_vary" type="number" style="height:100%; width:100%;" data-parent="app"></td>
+                          <td><input id="siz_vary" type="number" style="height:100%; width:100%;" data-parent="siz"></td>
+                          <td><input id="int_vary" type="number" style="height:100%; width:100%;" data-parent="int"></td>
+                          <td><input id="edu_vary" type="number" style="height:100%; width:100%;" data-parent="edu"></td>
+                          <td><input id="hp_vary" type="number" style="height:100%; width:100%;" data-parent="hp"></td>
+                          <td><input id="mp_vary" type="number" style="height:100%; width:100%;" data-parent="mp"></td>
+                          <td><input id="san_vary" type="number" style="height:100%; width:100%;" data-parent="san"></td>
+                          <td><input id="idea_vary" type="number" style="height:100%; width:100%;" data-parent="idea"></td>
+                          <td><input id="lucky_vary" type="number" style="height:100%; width:100%;" data-parent="lucky"></td>
+                          <td><input id="wisdom_vary" type="number" style="height:100%; width:100%;" data-parent="wisdom"></td>
+                      </tr>
+          <tr>
+            <th>合計</th>
+                          <td><input id="str_sum" type="text" style="height:100%; width:100%;" data-parent="str" readonly="readonly"></td>
+                          <td><input id="con_sum" type="text" style="height:100%; width:100%;" data-parent="con" readonly="readonly"></td>
+                          <td><input id="pow_sum" type="text" style="height:100%; width:100%;" data-parent="pow" readonly="readonly"></td>
+                          <td><input id="app_sum" type="text" style="height:100%; width:100%;" data-parent="app" readonly="readonly"></td>
+                          <td><input id="siz_sum" type="text" style="height:100%; width:100%;" data-parent="siz" readonly="readonly"></td>
+                          <td><input id="int_sum" type="text" style="height:100%; width:100%;" data-parent="int" readonly="readonly"></td>
+                          <td><input id="edu_sum" type="text" style="height:100%; width:100%;" data-parent="edu" readonly="readonly"></td>
+                          <td><input id="hp_sum" type="text" style="height:100%; width:100%;" data-parent="hp" readonly="readonly"></td>
+                          <td><input id="mp_sum" type="text" style="height:100%; width:100%;" data-parent="mp" readonly="readonly"></td>
+                          <td><input id="san_sum" type="text" style="height:100%; width:100%;" data-parent="san" readonly="readonly"></td>
+                          <td><input id="idea_sum" type="text" style="height:100%; width:100%;" data-parent="idea" readonly="readonly"></td>
+                          <td><input id="lucky_sum" type="text" style="height:100%; width:100%;" data-parent="lucky" readonly="readonly"></td>
+                          <td><input id="wisdom_sum" type="text" style="height:100%; width:100%;" data-parent="wisdom" readonly="readonly"></td>
+                      </tr>
+        </table>
+                  <div class="panel panel-primary">
+            <div class="panel-heading">戦闘技能</div>
+            <div class="panel-body">
+              <div class="row">
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle0" value="回避" data-ini="0" data-parent="battle">
+                      回避 0                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle1" value="キック" data-ini="25" data-parent="battle">
+                      キック 25                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle2" value="組み付き" data-ini="25" data-parent="battle">
+                      組み付き 25                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle3" value="こぶし（パンチ）" data-ini="50" data-parent="battle">
+                      こぶし（パンチ） 50                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle4" value="頭突き" data-ini="10" data-parent="battle">
+                      頭突き 10                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle5" value="投擲" data-ini="25" data-parent="battle">
+                      投擲 25                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle6" value="マーシャルアーツ" data-ini="1" data-parent="battle">
+                      マーシャルアーツ 1                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle7" value="拳銃" data-ini="20" data-parent="battle">
+                      拳銃 20                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle8" value="サブマシンガン" data-ini="15" data-parent="battle">
+                      サブマシンガン 15                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle9" value="ショットガン" data-ini="30" data-parent="battle">
+                      ショットガン 30                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle10" value="マシンガン" data-ini="15" data-parent="battle">
+                      マシンガン 15                    </button>
+                  </div>
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-primary center-block btn-block skill" id="battle11" value="ライフル" data-ini="25" data-parent="battle">
+                      ライフル 25                    </button>
+                  </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                  <button type="button" class="btn btn-primary center-block btn-block">追加</button>
+                </div>
               </div>
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-              <button type="button" class="btn btn-success center-block btn-block">追加</button>
+              <div class="row">
+                <div id="battle_slider" class="col-xs-4 col-xs-offset-1">
+                </div>
+                <div class="col-xs-2 col-xs-offset-1" id="battle">
+                  hello!!
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn btn-primary center-block btn-block" id="battle_button" data-parent="battle" disabled>
+                    確定
+                  </button>
+                </div>
+              </div> 
             </div>
           </div>
-          <div class="row">
-            <div id="explorer_slider" class="col-xs-4 col-xs-offset-1">
-            </div>
-            <div class="col-xs-2 col-xs-offset-1" id="explorer">
-              hello!!
-            </div>
-            <div class="col-xs-1">
-              <button class="btn btn-success center-block btn-block" id="explorer_button" data-parent="explorer" disabled>
-                確定
-              </button>
-            </div>
-          </div> 
-        </div>
-      </div>
-          <div class="panel panel-info">
-        <div class="panel-heading">行動技能</div>
-        <div class="panel-body">
-          <div class="row">
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-info center-block btn-block skill" id="action0" value="aiueo" data-ini="15" data-parent="action">
-                  aiueo 15                </button>
+                  <div class="panel panel-success">
+            <div class="panel-heading">探索技能</div>
+            <div class="panel-body">
+              <div class="row">
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-success center-block btn-block skill" id="explorer0" value="aiueo" data-ini="15" data-parent="explorer">
+                      aiueo 15                    </button>
+                  </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                  <button type="button" class="btn btn-success center-block btn-block">追加</button>
+                </div>
               </div>
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-              <button type="button" class="btn btn-info center-block btn-block">追加</button>
+              <div class="row">
+                <div id="explorer_slider" class="col-xs-4 col-xs-offset-1">
+                </div>
+                <div class="col-xs-2 col-xs-offset-1" id="explorer">
+                  hello!!
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn btn-success center-block btn-block" id="explorer_button" data-parent="explorer" disabled>
+                    確定
+                  </button>
+                </div>
+              </div> 
             </div>
           </div>
-          <div class="row">
-            <div id="action_slider" class="col-xs-4 col-xs-offset-1">
-            </div>
-            <div class="col-xs-2 col-xs-offset-1" id="action">
-              hello!!
-            </div>
-            <div class="col-xs-1">
-              <button class="btn btn-info center-block btn-block" id="action_button" data-parent="action" disabled>
-                確定
-              </button>
-            </div>
-          </div> 
-        </div>
-      </div>
-          <div class="panel panel-warning">
-        <div class="panel-heading">交渉技能</div>
-        <div class="panel-body">
-          <div class="row">
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-warning center-block btn-block skill" id="connection0" value="aiueo" data-ini="15" data-parent="connection">
-                  aiueo 15                </button>
+                  <div class="panel panel-info">
+            <div class="panel-heading">行動技能</div>
+            <div class="panel-body">
+              <div class="row">
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-info center-block btn-block skill" id="action0" value="aiueo" data-ini="15" data-parent="action">
+                      aiueo 15                    </button>
+                  </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                  <button type="button" class="btn btn-info center-block btn-block">追加</button>
+                </div>
               </div>
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-              <button type="button" class="btn btn-warning center-block btn-block">追加</button>
+              <div class="row">
+                <div id="action_slider" class="col-xs-4 col-xs-offset-1">
+                </div>
+                <div class="col-xs-2 col-xs-offset-1" id="action">
+                  hello!!
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn btn-info center-block btn-block" id="action_button" data-parent="action" disabled>
+                    確定
+                  </button>
+                </div>
+              </div> 
             </div>
           </div>
-          <div class="row">
-            <div id="connection_slider" class="col-xs-4 col-xs-offset-1">
-            </div>
-            <div class="col-xs-2 col-xs-offset-1" id="connection">
-              hello!!
-            </div>
-            <div class="col-xs-1">
-              <button class="btn btn-warning center-block btn-block" id="connection_button" data-parent="connection" disabled>
-                確定
-              </button>
-            </div>
-          </div> 
-        </div>
-      </div>
-          <div class="panel panel-danger">
-        <div class="panel-heading">戦闘技能</div>
-        <div class="panel-body">
-          <div class="row">
-                          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-                <button type="button" class="btn btn-danger center-block btn-block skill" id="wisdom0" value="aiueo" data-ini="15" data-parent="wisdom">
-                  aiueo 15                </button>
+                  <div class="panel panel-warning">
+            <div class="panel-heading">交渉技能</div>
+            <div class="panel-body">
+              <div class="row">
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-warning center-block btn-block skill" id="connection0" value="aiueo" data-ini="15" data-parent="connection">
+                      aiueo 15                    </button>
+                  </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                  <button type="button" class="btn btn-warning center-block btn-block">追加</button>
+                </div>
               </div>
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block-mb-sm">
-              <button type="button" class="btn btn-danger center-block btn-block">追加</button>
+              <div class="row">
+                <div id="connection_slider" class="col-xs-4 col-xs-offset-1">
+                </div>
+                <div class="col-xs-2 col-xs-offset-1" id="connection">
+                  hello!!
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn btn-warning center-block btn-block" id="connection_button" data-parent="connection" disabled>
+                    確定
+                  </button>
+                </div>
+              </div> 
             </div>
           </div>
-          <div class="row">
-            <div id="wisdom_slider" class="col-xs-4 col-xs-offset-1">
+                  <div class="panel panel-danger">
+            <div class="panel-heading">戦闘技能</div>
+            <div class="panel-body">
+              <div class="row">
+                                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                    <button type="button" class="btn btn-danger center-block btn-block skill" id="wisdom0" value="aiueo" data-ini="15" data-parent="wisdom">
+                      aiueo 15                    </button>
+                  </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
+                  <button type="button" class="btn btn-danger center-block btn-block">追加</button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="wisdom_slider" class="col-xs-4 col-xs-offset-1">
+                </div>
+                <div class="col-xs-2 col-xs-offset-1" id="wisdom">
+                  hello!!
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn btn-danger center-block btn-block" id="wisdom_button" data-parent="wisdom" disabled>
+                    確定
+                  </button>
+                </div>
+              </div> 
             </div>
-            <div class="col-xs-2 col-xs-offset-1" id="wisdom">
-              hello!!
-            </div>
-            <div class="col-xs-1">
-              <button class="btn btn-danger center-block btn-block" id="wisdom_button" data-parent="wisdom" disabled>
-                確定
-              </button>
-            </div>
-          </div> 
-        </div>
-      </div>
-      </div>
+          </div>
+              </div>
+    </div>
+  </div>
 </body>
 </html>
