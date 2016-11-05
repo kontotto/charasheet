@@ -2,6 +2,7 @@ $(function(){
   const STR = 'str';
   const CON = 'con';
   const POW = 'pow';
+  const DEX = 'dex';
   const APP = 'app';
   const SIZ = 'siz';
   const EDU = 'edu';
@@ -12,58 +13,54 @@ $(function(){
   const IDEA = 'idea';
   const LUCKY = 'lucky';
   const WISDOM = 'wisdom';
-  
+  const DODGE = 'dodge';
 
   // changeSum(string dataparent);
   // ステータスの合計値を変更
   function changeSum(dataParent){
-    console.log(dataParent);
     let sumVal=0;
     let originVal = Number($(`#${dataParent}_origin`).val());
     let varyVal   = Number($(`#${dataParent}_vary`).val());
     sumVal = originVal + varyVal;
     $(`#${dataParent}_sum`).val(sumVal);
-  }
-
-  // 
-  $('table [id$=_origin]').change(function(){
-    let dataParent = $(this).attr('data-parent');
-    let val = Number($(this).val());
 
     switch(dataParent){
       case INT: // アイデア
-        $(`#${IDEA}_origin`).val(val * 5);
+        $(`#${IDEA}_origin`).val(sumVal * 5);
         changeSum(IDEA);
         break;
       case POW: // 幸運, MP
         //SAN
-        $(`#${SAN}_origin`).val(val * 5);
+        $(`#${SAN}_origin`).val(sumVal * 5);
         changeSum(SAN);
         //幸運
-        $(`#${LUCKY}_origin`).val(val * 5);
+        $(`#${LUCKY}_origin`).val(sumVal * 5);
         changeSum(LUCKY);
         //MP
-        $(`#${MP}_origin`).val(val);
+        $(`#${MP}_origin`).val(sumVal);
         changeSum(MP);
         break;
       case EDU: // 知識
-        $(`#${WISDOM}_origin`).val(val * 5);
+        $(`#${WISDOM}_origin`).val(sumVal * 5);
         changeSum(WISDOM);
         break;
       case CON: // HP
       case SIZ:
-        let conVal = Number($(`#${CON}_origin`).val());
-        let sizVal = Number($(`#${SIZ}_origin`).val());
+        let conVal = Number($(`#${CON}_sum`).val());
+        let sizVal = Number($(`#${SIZ}_sum`).val());
         let average = (conVal + sizVal)/2;
         let mod = (conVal + sizVal)%2;
         $(`#${HP}_origin`).val(Math.ceil(average));
         changeSum(HP);
         break;
+      case DEX: //DODGE
+        $(`#${DODGE}_origin`).val(sumVal * 2);
+        changeSum(DODGE);
+        break;
     }
-    changeSum(dataParent);
-  });
+  }
 
-  $('table [id$=_vary]').change(function(){
+  $('table [id$=_vary], [id$=_origin]').change(function(){
     changeSum($(this).attr('data-parent'));
   });
 

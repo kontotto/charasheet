@@ -15,6 +15,11 @@
   "readonly": false
 },
 {
+  "name": "DEX",
+  "id": "dex",
+  "readonly": false
+},
+{
   "name": "APP",
   "id": "app",
   "readonly": false
@@ -62,6 +67,11 @@
 {
   "name": "知識",
   "id": "wisdom",
+  "readonly": true
+},
+{
+  "name": "回避",
+  "id": "dodge",
   "readonly": true
 }
 ]
