@@ -1,67 +1,85 @@
-$(function(){
-  const STR = 'str';
-  const CON = 'con';
-  const POW = 'pow';
-  const DEX = 'dex';
-  const APP = 'app';
-  const SIZ = 'siz';
-  const EDU = 'edu';
-  const INT = 'int';
-  const HP = 'hp';
-  const MP = 'mp';
-  const SAN = 'san';
-  const IDEA = 'idea';
-  const LUCKY = 'lucky';
-  const WISDOM = 'wisdom';
-  const DODGE = 'dodge';
+const stats = {};
+stats.STR = 'str';
+stats.CON = 'con';
+stats.POW = 'pow';
+stats.DEX = 'dex';
+stats.APP = 'app';
+stats.SIZ = 'siz';
+stats.EDU = 'edu';
+stats.INT = 'int';
+stats.HP = 'hp';
+stats.MP = 'mp';
+stats.SAN = 'san';
+stats.IDEA = 'idea';
+stats.LUCKY = 'lucky';
+stats.WISDOM = 'wisdom';
+stats.DODGE = 'dodge';
 
-  // changeSum(string dataparent);
-  // ステータスの合計値を変更
-  function changeSum(dataParent){
-    let sumVal=0;
-    let originVal = Number($(`#${dataParent}_origin`).val());
-    let varyVal   = Number($(`#${dataParent}_vary`).val());
-    sumVal = originVal + varyVal;
-    $(`#${dataParent}_sum`).val(sumVal);
+/* status */
 
-    switch(dataParent){
-      case INT: // アイデア
-        $(`#${IDEA}_origin`).val(sumVal * 5);
-        changeSum(IDEA);
-        break;
-      case POW: // 幸運, MP
-        //SAN
-        $(`#${SAN}_origin`).val(sumVal * 5);
-        changeSum(SAN);
-        //幸運
-        $(`#${LUCKY}_origin`).val(sumVal * 5);
-        changeSum(LUCKY);
-        //MP
-        $(`#${MP}_origin`).val(sumVal);
-        changeSum(MP);
-        break;
-      case EDU: // 知識
-        $(`#${WISDOM}_origin`).val(sumVal * 5);
-        changeSum(WISDOM);
-        break;
-      case CON: // HP
-      case SIZ:
-        let conVal = Number($(`#${CON}_sum`).val());
-        let sizVal = Number($(`#${SIZ}_sum`).val());
-        let average = (conVal + sizVal)/2;
-        let mod = (conVal + sizVal)%2;
-        $(`#${HP}_origin`).val(Math.ceil(average));
-        changeSum(HP);
-        break;
-      case DEX: //DODGE
-        $(`#${DODGE}_origin`).val(sumVal * 2);
-        changeSum(DODGE);
-        break;
-    }
+function changeSum(pname){
+  let oval = Number($(`#${pname}_origin`).val());
+  let vval = Number($(`#${pname}_vary`).val());
+  let sval = oval + vval;
+  $(`#${pname}_sum`).val(sval);
+}
+
+function changeBase(pname){
+  let srcVal = Number($(`#${pname}_sum`).val());
+  let dest = new Array();
+  
+  switch(pname){
+    case stats.INT:
+      dest.push(
+        { val: srcVal * 5, name: stats.IDEA}
+      );
+      break;
+    case stats.POW:
+      dest.push(
+        { val: srcVal * 5, name: stats.SAN},
+        { val: srcVal * 5, name: stats.LUCKY},
+        { val: srcVal, name: stats.MP }
+      );
+      break;
+    case stats.EDU:
+      dest.push(
+        { val: srcVal * 5, name: stats.WISDOM }
+      );
+      break;
+    case stats.CON:
+    case stats.SIZ:
+      let conVal = Number($(`#${stats.CON}_sum`).val());
+      let sizVal = Number($(`#${stats.SIZ}_sum`).val());
+      dest.push(
+        { val: Math.ceil((conVal + sizVal)/2), name: stats.HP }
+      );
+      break;
+    case stats.DEX:
+      dest.push(
+        { val: srcVal * 2, name: stats.DODGE }
+      );
+      break;
   }
 
+  for ( let i = 0, len = dest.length; i < len; i++ ){
+    $(`#${dest[i].name}_origin`).val(dest[i].val);
+    changeSum(dest[i].name);
+  }
+}
+
+function changeAll(){
+  for (let name in stats){
+    changeSum(stats[name]);
+    changeBase(stats[name]);
+  }
+}
+
+// ページを読み込んだ際に実行する処理
+$(function(){
+  changeAll();
+
   $('table [id$=_vary], [id$=_origin]').change(function(){
-    changeSum($(this).attr('data-parent'));
+    changeAll();
   });
 
   // スキルボタンが押された際の処理
