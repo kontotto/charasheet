@@ -74,8 +74,16 @@ function changeAll(){
   }
 }
 
+
 // ページを読み込んだ際に実行する処理
 $(function(){
+  $('#output').on('click',function(e){
+    let name = $('#user-name').val();
+    let blob = new Blob([ name ], { "type" : "text/plain" });
+    window.URL = window.URL || window.webkitURL;
+    window.open(window.URL.createObjectURL(blob));
+  });
+
   changeAll();
 
   $('table [id$=_vary], [id$=_origin]').change(function(){
