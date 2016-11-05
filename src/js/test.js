@@ -74,21 +74,29 @@ function changeAll(){
   }
 }
 
+function outputFunc(){
+    let name = $('#user-name').val() + '\n';
 
-// ページを読み込んだ際に実行する処理
-$(function(){
-  $('#output').on('click',function(e){
-    let name = $('#user-name').val();
+    $.each($('.skill'), function(i, val){
+      let ini = Number($(val).attr('data-ini'));
+      let current = Number($(val).attr('data-current'));
+      if(ini != current ){
+        console.log($(val).val());
+        name += $(val).val() + ': ' + $(val).attr('data-current') + '\n';
+      }
+    });
+
     let blob = new Blob([ name ], { "type" : "text/plain" });
     window.URL = window.URL || window.webkitURL;
     window.open(window.URL.createObjectURL(blob));
-  });
+}
+
+// ページを読み込んだ際に実行する処理
+$(function(){
+  $('#output').click(outputFunc);
 
   changeAll();
-
-  $('table [id$=_vary], [id$=_origin]').change(function(){
-    changeAll();
-  });
+  $('table [id$=_vary], [id$=_origin]').change(changeAll);
 
   // スキルボタンが押された際の処理
   // 値の変更ができる
