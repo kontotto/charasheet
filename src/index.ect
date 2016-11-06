@@ -20,7 +20,6 @@
           <div class="panel panel-primary">
             <div class="panel-heading">技能</div>
             <div class="panel-body">
-              <a id="hoge" target="_blank">aiueo</a>
               <button type="button" class="btn btn-primary center-block btn-block" id="output">出力</button>
             </div>
           </div>
@@ -29,8 +28,8 @@
       <div class="col-xs-9">
         <div class="row">
           <div class="col-xs-6">
+            <h2>プロフィール</h2>
             <table class="table table-bordered">
-              <caption>プロフィール</caption>
               <tr>
                 <th>名前</th><td><input id="user-name" type="text"></td>
               </tr>
@@ -43,8 +42,13 @@
             </table>
           </div>
         </div>
+        <h2>
+          ステータス
+          <button class="btn btn-default" id="dice-random">
+            <img src="/assets/saikoro.png">
+          </button>
+        </h2>
         <table class="table table-bordered">
-          <caption>ステータス</caption>
           <tr>
             <th class="title"></th>
             <% for i in @stats : %>

@@ -37,6 +37,11 @@ gulp.task('css', function(){
       .pipe(gulp.dest('./public/css'));
 });
 
+gulp.task('assets', function(){
+  gulp.src('./assets/*')
+      .pipe(gulp.dest('./public/assets'));
+});
+
 gulp.task('webserver', function(){
   gulp.src('./public')
       .pipe(webserver({
@@ -52,6 +57,6 @@ gulp.task('watch', function(){
 });
 
 gulp.task('start', ['webserver']);
-gulp.task('build', ['html', 'js', 'css']);
+gulp.task('build', ['html', 'js', 'css', 'assets']);
 gulp.task('dev', ['build', 'watch', 'start']);
 gulp.task('default', ['test', 'html', 'js', 'css', 'watch']);

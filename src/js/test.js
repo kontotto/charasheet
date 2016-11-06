@@ -75,8 +75,29 @@ function changeAll(){
 }
 
 function outputFunc(){
-    let name = $('#user-name').val() + '\n';
+    let name = '';
+    name += '名前: ' +$('#user-name').val() + '\n';
+    name += '職業: ' +$('#user-job').val() + '\n';
+    name += '備考: ' +$('#user-note').val() + '\n\n';
 
+    name += '*ステータス*\n';
+    name += ' STR: ' + $(`#${stats.STR}_sum`).val() + '  ';
+    name += 'CON: ' + $(`#${stats.CON}_sum`).val() + '  ';
+    name += 'POW: ' + $(`#${stats.POW}_sum`).val() + '  ';
+    name += 'DEX: ' + $(`#${stats.DEX}_sum`).val() + '  ';
+    name += 'APP: ' + $(`#${stats.APP}_sum`).val() + '  ';
+    name += 'SIZ: ' + $(`#${stats.SIZ}_sum`).val() + '  ';
+    name += 'INT: ' + $(`#${stats.INT}_sum`).val() + '  ';
+    name += 'EDU: ' + $(`#${stats.EDU}_sum`).val() + '  \n ';
+    name += 'HP: ' + $(`#${stats.HP}_sum`).val() + '  ';
+    name += 'MP: ' + $(`#${stats.MP}_sum`).val() + '  ';
+    name += 'SAN: ' + $(`#${stats.SAN}_sum`).val() + '  ';
+    name += 'アイデア: ' + $(`#${stats.IDEA}_sum`).val() + '  ';
+    name += '幸運: ' + $(`#${stats.LUCKY}_sum`).val() + '  ';
+    name += '知識: ' + $(`#${stats.WISDOM}_sum`).val() + '  ';
+    name += '回避: ' + $(`#${stats.DODGE}_sum`).val() + '  \n\n';
+
+    name += '*技能*\n';
     $.each($('.skill'), function(i, val){
       let ini = Number($(val).attr('data-ini'));
       let current = Number($(val).attr('data-current'));
@@ -91,13 +112,34 @@ function outputFunc(){
     window.open(window.URL.createObjectURL(blob));
 }
 
+function diceRoll(number, max){
+  let sum=0;
+  for(let i=0; i < number; i++){
+    sum += Math.floor( Math.random() * max ) + 1;
+  }
+  return sum;
+}
+
+function doDice(){
+  console.log(diceRoll(1,6));
+  $(`#${stats.STR}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.CON}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.POW}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.DEX}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.APP}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.SIZ}_origin`).val( diceRoll(2, 6) + 6 );
+  $(`#${stats.INT}_origin`).val( diceRoll(2, 6) + 6 );
+  $(`#${stats.EDU}_origin`).val( diceRoll(3, 6) + 3 );
+  changeAll();
+}
+
 // ページを読み込んだ際に実行する処理
 $(function(){
   $('#output').click(outputFunc);
 
   changeAll();
   $('table [id$=_vary], [id$=_origin]').change(changeAll);
-
+  $('#dice-random').click(doDice);
   // スキルボタンが押された際の処理
   // 値の変更ができる
   $('.skill').click(function(e){
