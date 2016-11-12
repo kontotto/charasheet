@@ -20,16 +20,35 @@
           <div class="panel panel-primary">
             <div class="panel-heading">技能</div>
             <div class="panel-body">
-              <label for="usr-name">Name:</label>
-              <input type="text" class="form-control" id="usr-name">
-              <input type="text" class="form-control">
+              <button type="button" class="btn btn-primary center-block btn-block" id="output">出力</button>
             </div>
           </div>
         </div>
       </div>
       <div class="col-xs-9">
+        <div class="row">
+          <div class="col-xs-6">
+            <h2>プロフィール</h2>
+            <table class="table table-bordered">
+              <tr>
+                <th>名前</th><td><input id="user-name" type="text"></td>
+              </tr>
+              <tr>
+                <th>職業</th><td><input id="user-job" type="text"></td>
+              </tr>
+              <tr>
+                <th>備考</th><td><input id="user-note" type="text"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2>
+          ステータス
+          <button class="btn btn-default" id="dice-random">
+            <img src="/assets/saikoro.png">
+          </button>
+        </h2>
         <table class="table table-bordered">
-          <caption>ステータス</caption>
           <tr>
             <th class="title"></th>
             <% for i in @stats : %>
@@ -66,7 +85,7 @@
               <div class="row">
                 <% for i in panel.list : %>
                   <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 block-mb-sm">
-                    <button type="button" class="btn <%= panel.btn_color %> center-block btn-block skill" id="<%= panel.parent+i.id %>" value="<%= i.name %>" data-ini="<%= i.ini %>" data-parent="<%= panel.parent %>">
+                    <button type="button" class="btn <%= panel.btn_color %> center-block btn-block skill" id="<%= panel.parent+ i.id %>" value="<%= i.name %>" data-ini="<%= i.ini %>" data-parent="<%= panel.parent %>" data-current="<%= i.ini %>">
                       <%= i.name + " " + i.ini %>
                     </button>
                   </div>

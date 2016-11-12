@@ -1,72 +1,145 @@
-$(function(){
-  const STR = 'str';
-  const CON = 'con';
-  const POW = 'pow';
-  const APP = 'app';
-  const SIZ = 'siz';
-  const EDU = 'edu';
-  const INT = 'int';
-  const HP = 'hp';
-  const MP = 'mp';
-  const SAN = 'san';
-  const IDEA = 'idea';
-  const LUCKY = 'lucky';
-  const WISDOM = 'wisdom';
-  
+const stats = {};
+stats.STR = 'str';
+stats.CON = 'con';
+stats.POW = 'pow';
+stats.DEX = 'dex';
+stats.APP = 'app';
+stats.SIZ = 'siz';
+stats.EDU = 'edu';
+stats.INT = 'int';
+stats.HP = 'hp';
+stats.MP = 'mp';
+stats.SAN = 'san';
+stats.IDEA = 'idea';
+stats.LUCKY = 'lucky';
+stats.WISDOM = 'wisdom';
+stats.DODGE = 'dodge';
 
-  // changeSum(string dataparent);
-  // ステータスの合計値を変更
-  function changeSum(dataParent){
-    console.log(dataParent);
-    let sumVal=0;
-    let originVal = Number($(`#${dataParent}_origin`).val());
-    let varyVal   = Number($(`#${dataParent}_vary`).val());
-    sumVal = originVal + varyVal;
-    $(`#${dataParent}_sum`).val(sumVal);
+/* status */
+
+function changeSum(pname){
+  let oval = Number($(`#${pname}_origin`).val());
+  let vval = Number($(`#${pname}_vary`).val());
+  let sval = oval + vval;
+  $(`#${pname}_sum`).val(sval);
+}
+
+function changeBase(pname){
+  let srcVal = Number($(`#${pname}_sum`).val());
+  let dest = new Array();
+  
+  switch(pname){
+    case stats.INT:
+      dest.push(
+        { val: srcVal * 5, name: stats.IDEA}
+      );
+      break;
+    case stats.POW:
+      dest.push(
+        { val: srcVal * 5, name: stats.SAN},
+        { val: srcVal * 5, name: stats.LUCKY},
+        { val: srcVal, name: stats.MP }
+      );
+      break;
+    case stats.EDU:
+      dest.push(
+        { val: srcVal * 5, name: stats.WISDOM }
+      );
+      break;
+    case stats.CON:
+    case stats.SIZ:
+      let conVal = Number($(`#${stats.CON}_sum`).val());
+      let sizVal = Number($(`#${stats.SIZ}_sum`).val());
+      dest.push(
+        { val: Math.ceil((conVal + sizVal)/2), name: stats.HP }
+      );
+      break;
+    case stats.DEX:
+      dest.push(
+        { val: srcVal * 2, name: stats.DODGE }
+      );
+      break;
   }
 
-  // 
-  $('table [id$=_origin]').change(function(){
-    let dataParent = $(this).attr('data-parent');
-    let val = Number($(this).val());
+  for ( let i = 0, len = dest.length; i < len; i++ ){
+    $(`#${dest[i].name}_origin`).val(dest[i].val);
+    changeSum(dest[i].name);
+  }
+}
 
-    switch(dataParent){
-      case INT: // アイデア
-        $(`#${IDEA}_origin`).val(val * 5);
-        changeSum(IDEA);
-        break;
-      case POW: // 幸運, MP
-        //SAN
-        $(`#${SAN}_origin`).val(val * 5);
-        changeSum(SAN);
-        //幸運
-        $(`#${LUCKY}_origin`).val(val * 5);
-        changeSum(LUCKY);
-        //MP
-        $(`#${MP}_origin`).val(val);
-        changeSum(MP);
-        break;
-      case EDU: // 知識
-        $(`#${WISDOM}_origin`).val(val * 5);
-        changeSum(WISDOM);
-        break;
-      case CON: // HP
-      case SIZ:
-        let conVal = Number($(`#${CON}_origin`).val());
-        let sizVal = Number($(`#${SIZ}_origin`).val());
-        let average = (conVal + sizVal)/2;
-        let mod = (conVal + sizVal)%2;
-        $(`#${HP}_origin`).val(Math.ceil(average));
-        changeSum(HP);
-        break;
-    }
-    changeSum(dataParent);
-  });
+function changeAll(){
+  for (let name in stats){
+    changeSum(stats[name]);
+    changeBase(stats[name]);
+  }
+}
 
-  $('table [id$=_vary]').change(function(){
-    changeSum($(this).attr('data-parent'));
-  });
+function outputFunc(){
+    let name = '';
+    name += '名前: ' +$('#user-name').val() + '\n';
+    name += '職業: ' +$('#user-job').val() + '\n';
+    name += '備考: ' +$('#user-note').val() + '\n\n';
 
+    name += '*ステータス*\n';
+    name += ' STR: ' + $(`#${stats.STR}_sum`).val() + '  ';
+    name += 'CON: ' + $(`#${stats.CON}_sum`).val() + '  ';
+    name += 'POW: ' + $(`#${stats.POW}_sum`).val() + '  ';
+    name += 'DEX: ' + $(`#${stats.DEX}_sum`).val() + '  ';
+    name += 'APP: ' + $(`#${stats.APP}_sum`).val() + '  ';
+    name += 'SIZ: ' + $(`#${stats.SIZ}_sum`).val() + '  ';
+    name += 'INT: ' + $(`#${stats.INT}_sum`).val() + '  ';
+    name += 'EDU: ' + $(`#${stats.EDU}_sum`).val() + '  \n ';
+    name += 'HP: ' + $(`#${stats.HP}_sum`).val() + '  ';
+    name += 'MP: ' + $(`#${stats.MP}_sum`).val() + '  ';
+    name += 'SAN: ' + $(`#${stats.SAN}_sum`).val() + '  ';
+    name += 'アイデア: ' + $(`#${stats.IDEA}_sum`).val() + '  ';
+    name += '幸運: ' + $(`#${stats.LUCKY}_sum`).val() + '  ';
+    name += '知識: ' + $(`#${stats.WISDOM}_sum`).val() + '  ';
+    name += '回避: ' + $(`#${stats.DODGE}_sum`).val() + '  \n\n';
+
+    name += '*技能*\n';
+    $.each($('.skill'), function(i, val){
+      let ini = Number($(val).attr('data-ini'));
+      let current = Number($(val).attr('data-current'));
+      if(ini != current ){
+        console.log($(val).val());
+        name += $(val).val() + ': ' + $(val).attr('data-current') + '\n';
+      }
+    });
+
+    let blob = new Blob([ name ], { "type" : "text/plain" });
+    window.URL = window.URL || window.webkitURL;
+    window.open(window.URL.createObjectURL(blob));
+}
+
+function diceRoll(number, max){
+  let sum=0;
+  for(let i=0; i < number; i++){
+    sum += Math.floor( Math.random() * max ) + 1;
+  }
+  return sum;
+}
+
+function doDice(){
+  console.log(diceRoll(1,6));
+  $(`#${stats.STR}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.CON}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.POW}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.DEX}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.APP}_origin`).val( diceRoll(3, 6) );
+  $(`#${stats.SIZ}_origin`).val( diceRoll(2, 6) + 6 );
+  $(`#${stats.INT}_origin`).val( diceRoll(2, 6) + 6 );
+  $(`#${stats.EDU}_origin`).val( diceRoll(3, 6) + 3 );
+  changeAll();
+}
+
+// ページを読み込んだ際に実行する処理
+$(function(){
+  $('#output').click(outputFunc);
+
+  changeAll();
+  $('table [id$=_vary], [id$=_origin]').change(changeAll);
+  $('#dice-random').click(doDice);
   // スキルボタンが押された際の処理
   // 値の変更ができる
   $('.skill').click(function(e){

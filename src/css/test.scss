@@ -2,6 +2,7 @@
 
 .affix{
   top: 0;
+  width: 200px;
 }
 
 input:read-only{
@@ -10,6 +11,11 @@ input:read-only{
 
 table th.title{
   width: 5em;
+}
+
+input{
+  height: 100%;
+  width: 100%;
 }
 
 td, th{
