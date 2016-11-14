@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app='myApp'>
+<head>
+  <meta charset="UTF-8">
+
+  <title>CharaSheet</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/css/test.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="/js/app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div id="uctrl" class="col-xs-4" ng-controller="UserController as us">
+        <div class="row">
+          <div class="panel panel-primary">
+            <div class="panel-heading">技能</div>
+            <div class="panel-body">
+              
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-xs-6">名称</th><th>初期値</th><th>職業P</th><th>趣味P</th><th>合計</th><th>削除</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="skill in us.list">
+                  <td>{{skill.name}}</td>
+                  <td>{{skill.ini}}</td>
+                  <td><input type="number" ng-model="skill.job"></td>
+                  <td><input type="number" ng-model="skill.int"></td>
+                  <td><input type="number" ng-model="skill.job+skill.int+skill.ini" readonly="readonly" min="skill.ini" max="100"></td>
+                  <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" /></button></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="panel-footer">
+              <button type="button" class="btn btn-primary center-block btn-block" id="output">出力</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-8">
+        <div class="row" ng-controller="SkillController as sc">
+          <div class="panel panel-primary" ng-attr-id="{{'group_' + group._id}}" ng-repeat="group in sc.all.groups">
+            <div class="panel-heading">{{group.name}}</div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-3 block-mb-sm" ng-repeat="skill in group.skills">
+                  <button type="button" class="btn btn-primary center-block btn-block" ng-attr-id="{{'skill_' + skill._id}}" ng-click="sc.addList(skill._id, skill.name, skill.ini)">
+                    {{skill.name}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

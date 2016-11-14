@@ -13,13 +13,7 @@ gulp.task('test', function(){
 });
 
 gulp.task('html', function(){
-  gulp.src('./src/*.ect')
-      .pipe(ect({data: function(file, cb){
-        cb({
-          data: data,
-          stats: stats
-        });
-      }}))
+  gulp.src('./src/*.html')
       .pipe(gulp.dest('./public'));
 });
 
@@ -53,7 +47,7 @@ gulp.task('webserver', function(){
 gulp.task('watch', function(){
   gulp.watch('./src/js/*.js', ['js']);
   gulp.watch('./src/css/*.scss', ['css']);
-  gulp.watch('./src/*.ect', ['html']);
+  gulp.watch('./src/*.html', ['html']);
 });
 
 gulp.task('start', ['webserver']);
