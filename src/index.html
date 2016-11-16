@@ -35,7 +35,7 @@
                   <td>{{skill.ini}}</td>
                   <td><input type="number" ng-model="skill.job"></td>
                   <td><input type="number" ng-model="skill.int"></td>
-                  <td><input type="number" ng-model="skill.job+skill.int+skill.ini" readonly="readonly" min="skill.ini" max="100"></td>
+                  <td><input type="number" ng-model="skill.sum" ng-change="us.changeSum($index)" readonly="readonly"></td>
                   <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" /></button></td>
                 </tr>
               </tbody>
@@ -47,13 +47,57 @@
         </div>
       </div>
       <div class="col-xs-8">
+
+        <!-- プロフィール -->
+        <div class="row">
+          <div class="col-xs-6">
+            <h2>プロフィール</h2>
+            <table class="table table-bordered">
+              <tr>
+                <th>名前</th><td><input id="user-name" type="text"></td>
+              </tr>
+              <tr>
+                <th>職業</th><td><input id="user-name" type="text"></td>
+              </tr>
+              <tr>
+                <th>備考</th><td><input id="user-name" type="text"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- ステータス -->
+        <div class="row" ng-controller="StatusController as statsC">
+          <h2>
+            ステータス
+            <button class="btn btn-default" ng-click="statsC.statusSet()">
+              <img src="/assets/saikoro.png">
+            </button>
+          </h2>
+          <table class="table table-bordered">
+            <tr>
+              <th></th><th ng-repeat="stats in statsC.list">{{stats.name}}</th>
+            </tr>
+            <tr>
+              <th>能力値</th><th ng-repeat="stats in statsC.list">{{stats.origin}}</th>
+            </tr>
+            <tr>
+              <th>増減値</th><th ng-repeat="stats in statsC.list">{{stats.vary}}</th>
+            </tr>
+            <tr>
+              <th>合計値</th><th ng-repeat="stats in statsC.list">{{stats.sum}}</th>
+            </tr>
+          </table>
+        </div>
+        
+        <!-- skil一覧 -->
         <div class="row" ng-controller="SkillController as sc">
           <div class="panel panel-primary" ng-attr-id="{{'group_' + group._id}}" ng-repeat="group in sc.all.groups">
             <div class="panel-heading">{{group.name}}</div>
             <div class="panel-body">
               <div class="row">
                 <div class="col-xs-3 block-mb-sm" ng-repeat="skill in group.skills">
-                  <button type="button" class="btn btn-primary center-block btn-block" ng-attr-id="{{'skill_' + skill._id}}" ng-click="sc.addList(skill._id, skill.name, skill.ini)">
+                  <button type="button" class="btn btn-primary center-block btn-block" ng-click="sc.addList(skill._id, skill.name, skill.ini)">
                     {{skill.name}}
                   </button>
                 </div>
@@ -61,6 +105,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
