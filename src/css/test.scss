@@ -14,7 +14,6 @@ table th.title{
 }
 
 input{
-  height: 100%;
   width: 100%;
 }
 
@@ -26,17 +25,9 @@ td{
   padding: 0 !important;
 }
 
-// 暫定的
-#battle_slider .ui-slider-range { background: #729fcf; }
-#battle_slider .ui-slider-handle { border-color: #729fcf; }
-#action_slider .ui-slider-range { background: #729fcf; }
-#action_slider .ui-slider-handle { border-color: #729fcf; }
-#explorer_slider .ui-slider-range { background: #729fcf; }
-#explorer_slider .ui-slider-handle { border-color: #729fcf; }
-#connection_slider .ui-slider-range { background: #729fcf; }
-#connection_slider .ui-slider-handle { border-color: #729fcf; }
-#wisdom_slider .ui-slider-range { background: #729fcf; }
-#wisdom_slider .ui-slider-handle { border-color: #729fcf; }
+#status td{
+  font-size:150%;
+}
 
 /* 全体方向のmargin */
 .block-ma-sm {
