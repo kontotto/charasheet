@@ -11,9 +11,8 @@ function diceRoll(number, max){
 app.controller('UserController', function(){
   this.list = [];
   
-  this.changeSum = (index) => {
-    console.log("changeSum()");
-    this.list[index].sum = this.list[index].origin + this.list[index].vary;
+  this.changeSum = function(index){
+    this.list[index].sum = this.list[index].ini + this.list[index].int + this.list[index].job;
   };
 
   this.addList = (id, name, ini) => {
@@ -23,14 +22,25 @@ app.controller('UserController', function(){
       "ini" : ini
     });
   };
+
+  this.deleteList = (index) => {
+    console.log("deleted" + index);
+    this.list.splice(index, 1);
+  }
 });
 
 app.controller('StatusController', function(){
   this.statusSet = () => {
     for(var i = 0; i < this.list.length;i++){
       this.list[i].origin = diceRoll(2, 6);
+      this.changeSum(i);
     }
   };
+
+  this.changeSum = (index) => {
+    this.list[index].sum = this.list[index].origin + this.list[index].vary;
+  };
+
   this.list=[
   {
       "name": "STR",

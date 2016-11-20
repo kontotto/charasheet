@@ -16,13 +16,12 @@
 <body>
   <div class="container">
     <div class="row">
+      
+      <!-- サイドバー -->
       <div id="uctrl" class="col-xs-4" ng-controller="UserController as us">
         <div class="row">
           <div class="panel panel-primary">
             <div class="panel-heading">技能</div>
-            <div class="panel-body">
-              
-            </div>
             <table class="table">
               <thead>
                 <tr>
@@ -30,14 +29,17 @@
                 </tr>
               </thead>
               <tbody>
+
+                <!-- 取得スキル -->
                 <tr ng-repeat="skill in us.list">
                   <td>{{skill.name}}</td>
                   <td>{{skill.ini}}</td>
-                  <td><input type="number" ng-model="skill.job"></td>
-                  <td><input type="number" ng-model="skill.int"></td>
-                  <td><input type="number" ng-model="skill.sum" ng-change="us.changeSum($index)" readonly="readonly"></td>
-                  <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" /></button></td>
+                  <td><input type="number" ng-model="skill.job" ng-change="us.changeSum($index)" ng-init="skill.job = 0"></td>
+                  <td><input type="number" ng-model="skill.int" ng-change="us.changeSum($index)" ng-init="skill.int = 0"></td>
+                  <td><input type="number" ng-model="skill.sum" ng-init="skill.sum = skill.ini" readonly="readonly"></td>
+                  <td><button class="btn btn-danger" ng-click="us.deleteList($index)"><span class="glyphicon glyphicon-trash" /></button></td>
                 </tr>
+
               </tbody>
             </table>
             <div class="panel-footer">
@@ -46,6 +48,8 @@
           </div>
         </div>
       </div>
+
+      <!-- メインコンテンツ -->
       <div class="col-xs-8">
 
         <!-- プロフィール -->
@@ -57,10 +61,10 @@
                 <th>名前</th><td><input id="user-name" type="text"></td>
               </tr>
               <tr>
-                <th>職業</th><td><input id="user-name" type="text"></td>
+                <th>職業</th><td><input id="user-job" type="text"></td>
               </tr>
               <tr>
-                <th>備考</th><td><input id="user-name" type="text"></td>
+                <th>備考</th><td><input id="user-dsc" type="text"></td>
               </tr>
             </table>
           </div>
@@ -79,13 +83,22 @@
               <th></th><th ng-repeat="stats in statsC.list">{{stats.name}}</th>
             </tr>
             <tr>
-              <th>能力値</th><th ng-repeat="stats in statsC.list">{{stats.origin}}</th>
+              <th>能力値</th>
+              <td ng-repeat="stats in statsC.list">
+                <input type="number" ng-model="stats.origin" ng-change="statsC.changeSum($index)" ng-init="stats.origin = 0">
+              </td>
             </tr>
             <tr>
-              <th>増減値</th><th ng-repeat="stats in statsC.list">{{stats.vary}}</th>
+              <th>増減値</th>
+              <td ng-repeat="stats in statsC.list">
+                <input type="number" ng-model="stats.vary" ng-change="statsC.changeSum($index)" ng-init="stats.vary = 0">
+              </td>
             </tr>
             <tr>
-              <th>合計値</th><th ng-repeat="stats in statsC.list">{{stats.sum}}</th>
+              <th>合計値</th>
+              <td ng-repeat="stats in statsC.list">
+                <input type="number" ng-model="stats.sum" ng-init="stats.sum = 0">
+              </td>
             </tr>
           </table>
         </div>
