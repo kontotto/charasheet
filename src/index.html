@@ -13,69 +13,83 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   <script src="/js/app.js"></script>
 </head>
-<body>
-  <!-- <div class="container"> -->
-    <div class="row block-mr-lg block-ml-lg">
+<body> 
+  <div class="jumbotron">
+    <div class="container">
+      <h1>クトゥルフキャラシート</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
       
       <!-- サイドバー -->
-      <div id="uctrl" class="col-xs-4" ng-controller="UserController as us">
-        <div class="row block-mr-sm">
-          <div class="panel panel-primary">
+      <div id="uctrl" class="col-xs-3" ng-controller="UserController as us">
+        <div class="row" data-spy="affix" data-offset-top="220">
+          <div class="panel panel-primary" id="user-skills">
             <div class="panel-heading">技能</div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-xs-3">職業P</div><div class="col-xs-1">{{us.getJobAll()}}</div><div class="col-xs-1">/</div><div class="col-xs-1">{{us.getJob()}}</div>
-                <div class="col-xs-3">興味P</div><div class="col-xs-1">{{us.getIntAll()}}</div><div class="col-xs-1">/</div><div class="col-xs-1">{{us.getInt()}}</div>
+                <div class="col-xs-6">職業P {{us.getJobAll()}} / {{us.getJob()}}</div>
+                <div class="col-xs-6">趣味P <span class="label label-default">{{us.getIntAll()}}</span> / {{us.getInt()}}</div>
               </div>
             </div>
-            <table class="table">
+            <table class="table" >
               <thead>
                 <tr>
-                  <th class="col-xs-3">名称</th><th class="col-xs-2">初期</th><th class="col-xs-2">職業</th><th class="col-xs-2">趣味</th><th class="col-xs-2">合計</th><th class="col-xs-1"><span class="glyphicon glyphicon-trash" /></th>
+                  <th class="col-xs-6">名称</th><th class="col-xs-1">初</th><th class="col-xs-1">職</th><th class="col-xs-1">趣</th><th class="col-xs-2">計</th><th class="col-xs-1"><span class="glyphicon glyphicon-trash" /></th>
                 </tr>
               </thead>
               <tbody>
 
                 <!-- 取得スキル -->
-                <tr ng-repeat="skill in us.skills">
-                  <td>{{skill.name}}</td>
+                <tr ng-repeat="skill in us.skills | orderBy: 'groupid'">
+                  <td><input type="text" ng-model="skill.name"></td>
                   <td>{{skill.ini}}</td>
-                  <td><input type="number" ng-model="skill.job" ng-change="us.changeSum($index)" ng-init="skill.job = 0"></td>
-                  <td><input type="number" ng-model="skill.int" ng-change="us.changeSum($index)" ng-init="skill.int = 0"></td>
+                  <td><input type="number" ng-model="skill.job" ng-change="us.changeSum(skill)" ng-init="skill.job = 0"></td>
+                  <td><input type="number" ng-model="skill.int" ng-change="us.changeSum(skill)" ng-init="skill.int = 0"></td>
                   <td><input type="number" ng-model="skill.sum" ng-init="skill.sum = skill.ini" readonly="readonly"></td>
-                  <td><span class="glyphicon glyphicon-trash" ng-click="us.deleteList($index)" /></td>
+                  <td><button class="btn btn-{{skill.theme}} btn-block" ng-click="us.deleteList(skill)"><span class="glyphicon glyphicon-trash" /></button></td>
                 </tr>
 
+                <!-- 追加 -->
+                <tr>
+
+                </tr>
               </tbody>
             </table>
 
             <!-- 出力 -->
             <div class="panel-footer">
-              <button type="button" class="btn btn-primary center-block btn-block" ng-click="us.outputText()">テキストで出力</button>
-              <button type="button" class="btn btn-primary center-block btn-block" ng-click="us.regUser()">DBに登録</button>
+              <div class="row">
+                <div class="col-xs-4">
+                  <button type="button" class="btn btn-primary center-block btn-block" ng-click="us.outputText()">text出力</button>
+                </div>
+                <div class="col-xs-4">
+                  <button type="button" class="btn btn-primary center-block btn-block" ng-click="us.regUser()">DBに登録</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- メインコンテンツ -->
-      <div class="col-xs-8">
+      <div class="col-xs-9">
 
         <!-- プロフィール -->
         <div class="row" ng-controller="ProfileController as profileC">
-          <div class="col-xs-6">
-            <h2>プロフィール</h2>
-            <table class="table table-bordered">
-              <tr>
-                <td>名前</td><td><input ng-model="profileC.profile.name" type="text"></td>
-              </tr>
-              <tr>
-                <td>職業</td><td><input ng-model="profileC.profile.job" type="text"></td>
-              </tr>
-              <tr>
-                <td>備考</td><td><input ng-model="profileC.profile.dsc" type="text"></td>
-              </tr>
-            </table>
+          <h2>プロフィール</h2>
+          <div class="input-group">
+            <span class="input-group-addon">名前</span>
+            <input ng-model="profileC.profile.name" type="text" class="form-control" placeholder="ななしさん">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">職業</span>
+            <input ng-model="profileC.profile.job" type="text" class="form-control" placeholder="消防士">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">備考</span>
+            <textarea ng-model="profileC.profile.dsc" type="text" class="form-control" placeholder="たけのこの里が好き">aiueo</textarea>
           </div>
         </div>
 
@@ -115,13 +129,13 @@
         
         <!-- skil一覧 -->
         <div class="row" ng-controller="SkillController as sc">
-          <div class="panel panel-primary" ng-attr-id="{{'group_' + group._id}}" ng-repeat="group in sc.all.groups">
+          <div class="panel panel-{{sc.getTheme(group._id)}}" ng-attr-id="{{'group_' + group._id}}" ng-repeat="group in sc.all.groups">
             <div class="panel-heading">{{group.name}}</div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-xs-3 block-mb-sm" ng-repeat="skill in group.skills">
-                  <button type="button" class="btn btn-primary center-block btn-block" ng-click="sc.addList(skill._id, skill.name, skill.ini)">
-                    {{skill.name}}
+                <div class="col-xs-2 block-mb-sm" ng-repeat="skill in group.skills">
+                  <button type="button" class="btn btn-{{sc.getTheme(group._id)}} center-block btn-block" ng-click="sc.addList(skill._id, skill.name, skill.ini, group._id)">
+                    {{skill.name}} {{skill.ini}}
                   </button>
                 </div>
               </div>
@@ -131,6 +145,6 @@
 
       </div>
     </div>
-  <!-- </div> -->
+  </div>
 </body>
 </html>

@@ -1,16 +1,61 @@
 @import 'bootstrap';
 
-.affix{
-  top: 0;
-  width: 250px;
+body{
+  font-family:"游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
 }
+
+.affix{
+  top: 10px;
+}
+
+.affix-bottom {
+    position: relative
+}
+
+.container{
+  width: auto;
+}
+
+.jumbotron{
+  height: 200px;
+}
+
 
 input:read-only{
   background-color: #cccccc;
 }
 
-table th.title{
-  width: 5em;
+#user-skills{
+  text-align: center;
+  td{
+    text-align: center;
+    font-size: 140%;
+  }
+  th{
+    text-align: center;
+  }
+  input{
+    text-align: center;
+    color: #696969;
+  }
+  button{
+    height:100%;
+    width: 100%;
+  }
+}
+
+#status{
+  td{
+    font-size: 150%;
+  }
+
+  input{
+    text-align: center;
+  }
+
+  .title{
+    width: 5em;
+  }
 }
 
 input{
@@ -23,10 +68,6 @@ td, th{
 
 td{
   padding: 0 !important;
-}
-
-#status td{
-  font-size:150%;
 }
 
 /* 全体方向のmargin */
@@ -82,4 +123,15 @@ td{
 }
 .block-ml-lg {
     margin-left: 60px;
+}
+
+// numberのスピンボタンを消す
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
