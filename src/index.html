@@ -21,16 +21,16 @@
   </div>
   <div class="container">
     <div class="row">
-      
+
       <!-- サイドバー -->
       <div id="uctrl" class="col-xs-3" ng-controller="UserController as us">
         <div class="row" data-spy="affix" data-offset-top="220">
           <div class="panel panel-primary" id="user-skills">
             <div class="panel-heading">技能</div>
             <div class="panel-body">
-              <div class="row">
-                <div class="col-xs-6">職業P {{us.getJobAll()}} / {{us.getJob()}}</div>
-                <div class="col-xs-6">趣味P <span class="label label-default">{{us.getIntAll()}}</span> / {{us.getInt()}}</div>
+              <div class="row" id="point">
+                <div class="col-xs-6">職業P {{us.skillPointNumerator('job')}} / {{us.skillPointDenominator('job')}}</div>
+                <div class="col-xs-6">趣味P {{us.skillPointNumerator('int')}} / {{us.skillPointDenominator('int')}}</div>
               </div>
             </div>
             <table class="table" >
@@ -44,19 +44,18 @@
                 <!-- 取得スキル -->
                 <tr ng-repeat="skill in us.skills | orderBy: 'groupid'">
                   <td><input type="text" ng-model="skill.name"></td>
-                  <td>{{skill.ini}}</td>
+                  <td><input type="number" ng-model="skill.ini" ng-change="us.changeSum(skill)"></td>
                   <td><input type="number" ng-model="skill.job" ng-change="us.changeSum(skill)" ng-init="skill.job = 0"></td>
                   <td><input type="number" ng-model="skill.int" ng-change="us.changeSum(skill)" ng-init="skill.int = 0"></td>
                   <td><input type="number" ng-model="skill.sum" ng-init="skill.sum = skill.ini" readonly="readonly"></td>
                   <td><button class="btn btn-{{skill.theme}} btn-block" ng-click="us.deleteList(skill)"><span class="glyphicon glyphicon-trash" /></button></td>
                 </tr>
 
-                <!-- 追加 -->
-                <tr>
-
-                </tr>
               </tbody>
             </table>
+            
+            <!-- 追加ボタン -->
+            <button class="btn btn-default" ng-click="us.addList(0,'',0,5)">追加</button>
 
             <!-- 出力 -->
             <div class="panel-footer">

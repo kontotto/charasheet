@@ -4,6 +4,10 @@ body{
   font-family:"游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
 }
 
+#point{
+  font-size: 125%;
+}
+
 .affix{
   top: 10px;
 }
@@ -14,6 +18,7 @@ body{
 
 .container{
   width: auto;
+  padding: 0 30px;
 }
 
 .jumbotron{
@@ -36,7 +41,6 @@ input:read-only{
   }
   input{
     text-align: center;
-    color: #696969;
   }
   button{
     height:100%;

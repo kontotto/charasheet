@@ -5,11 +5,9 @@ const babel = require('gulp-babel');
 const webserver = require('gulp-webserver');
 
 const config = require('config');
-const data = require('./assets/data.json');
-const stats = require('./assets/stats.json');
 
 gulp.task('test', function(){
-  console.log(data);
+  console.log('test!!');
 });
 
 gulp.task('html', function(){

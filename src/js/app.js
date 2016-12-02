@@ -17,12 +17,13 @@ function diceRoll(number, max){
 
 function getTheme(groupid){
   let theme = 'default';
-    switch(groupid % 5){
+    switch(groupid % 6){
       case 0: theme = 'primary'; break;
       case 1: theme = 'danger'; break;
       case 2: theme = 'info'; break;
       case 3: theme = 'success'; break;
       case 4: theme = 'warning'; break;
+      case 5: theme = 'default'; break;
     }
   return theme;
 }
@@ -31,32 +32,23 @@ app.controller('UserController', function(Profile, Stats, $http){
   this.user = {skills:[]};
   this.skills = [];
 
-  this.getJobAll = () => {
+  this.skillPointDenominator = (skillname) => {
+    console.log("numerator: "+ skillname);
+    for(let i = 0; i < Stats.length; i++){
+      if(skillname == 'job' && Stats[i].id == 'edu') return Stats[i].sum * 20;
+      else if(skillname == 'int' && Stats[i].id == 'int') return Stats[i].sum * 10;
+    }
+  };
+
+  this.skillPointNumerator = (skillname) => {
     let sum = 0;
     for(let i = 0; i < this.skills.length; i++){
-      sum += this.skills[i].job;
+      sum += 
+        (skillname == 'int') ? this.skills[i].int
+      : (skillname == 'job') ? this.skills[i].job
+      : 0;
     }
     return sum;
-  };
-
-  this.getJob = () => {
-    for(let i = 0; i < Stats.length; i++){
-      if(Stats[i].id == 'edu') return Stats[i].sum * 20;
-    }
-  };
-
-  this.getIntAll = () => {
-    let sum = 0;
-    for(let i = 0; i < this.skills.length; i++){
-      sum += this.skills[i].int;
-    }
-    return sum;
-  };
-
-  this.getInt = () => {
-    for(let i = 0; i < Stats.length; i++){
-      if(Stats[i].id == 'int') return Stats[i].sum * 10;
-    }
   };
 
   this.outputText = () => {
@@ -105,7 +97,7 @@ app.controller('UserController', function(Profile, Stats, $http){
 
     // _idが要素中に含まれていればDBに登録済みなのでPUTで更新
     if('_id' in this.user){
-      method = 'GET';
+      method = 'PUT';
       apiname = '/' + this.user._id;
     // それ以外はPOSTで新規作成
     } else {
@@ -198,7 +190,7 @@ app.controller('StatusController', function(Stats){
           Math.ceil((this.list[this.getIndex('con')].sum + this.list[this.getIndex('siz')].sum)/2);
         break;
       case 'dex':
-        this.list[this.getIndex('dodge')].origin = this.list[index].sum * 5;
+        this.list[this.getIndex('dodge')].origin = this.list[index].sum * 2;
         break;
     }
   };
